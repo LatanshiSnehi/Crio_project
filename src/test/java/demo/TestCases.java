@@ -15,7 +15,7 @@ import java.util.logging.Level;
 import demo.wrappers.Wrappers;
 
 public class TestCases {
-    ChromeDriver driver;
+    
 
     /*
      * TODO: Write your tests here with testng @Test annotation. 
@@ -26,7 +26,10 @@ public class TestCases {
     /*
      * Do not change the provided methods unless necessary, they will help in automation and assessment
      */
-    @BeforeTest
+    ChromeDriver driver;
+
+    Wrappers wrappers ;
+   @BeforeTest(enabled = true)
     public void startBrowser()
     {
         System.setProperty("java.util.logging.config.file", "logging.properties");
@@ -49,10 +52,64 @@ public class TestCases {
         driver.manage().window().maximize();
     }
 
+
+    @Test(description = "Verify functionality of testCase01" , enabled = true)
+    public void  testCase01(){
+       
+
+    try{
+        System.out.println("starting testcase01");
+        wrappers = new Wrappers(driver);
+        Thread.sleep(2000);
+        wrappers.navigateToForm();
+        Thread.sleep(2000);
+        
+
+        wrappers.enterName("Crio Learner");
+        
+      
+        wrappers.enterAnswer();
+        
+
+        wrappers.selectRadioBtn("3 - 5");
+        
+
+        wrappers.selectCheckBox("Java");
+        
+        wrappers.selectCheckBox("Selenium");
+        Thread.sleep(5000);
+
+        wrappers.selectGender("Ms");
+
+        Thread.sleep(10000);
+        
+       wrappers.enterDate(7);
+       wrappers.enterTime("7", "30");
+
+       wrappers.submit();
+       
+       Thread.sleep(4000);
+
+
+
+
+        
+
+        System.out.println("testCase01 passed");
+        }catch(Exception e){
+            System.out.println("testcase01 failed");
+            e.printStackTrace();
+
+        }
+
+
+    }
+
+
     @AfterTest
     public void endTest()
     {
-        driver.close();
+        //driver.close();
         driver.quit();
 
     }

@@ -6,4 +6,5 @@
             <class name="demo.TestCases"></class>
         </classes>
     </test>
+    
 </suite>
